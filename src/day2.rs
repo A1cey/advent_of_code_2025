@@ -11,7 +11,7 @@
 // TODO: Part two, only one path where all pattern lengths are checked until halth of num length
 pub fn solve() {
     let part_one = part_one_iterator::solve();
-    let part_two = part_two_compare_remainder::solve();
+    let part_two = part_two_single_path::solve();
 
     dbg!(part_one);
     dbg!(part_two);
