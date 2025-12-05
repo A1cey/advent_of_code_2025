@@ -16,8 +16,8 @@ pub fn solve() {
     dbg!(part_one);
     dbg!(part_two);
 
-    assert_eq!(part_one, 13919717792);
-    assert_eq!(part_two, 14582313461);
+    assert_eq!(part_one, 13_919_717_792);
+    assert_eq!(part_two, 14_582_313_461);
 }
 
 pub mod part_one_conversion_to_string {
@@ -26,8 +26,8 @@ pub mod part_one_conversion_to_string {
 
         let mut result = 0;
 
-        for range in data.split(",").map(|range| {
-            let (low, high) = range.split_once("-").unwrap();
+        for range in data.split(',').map(|range| {
+            let (low, high) = range.split_once('-').unwrap();
             low.parse().unwrap()..high.parse::<u64>().unwrap() + 1
         }) {
             for num in range {
@@ -49,14 +49,14 @@ pub mod part_one_all_numbers_with_log {
 
         let mut result = 0;
 
-        for range in data.split(",").map(|range| {
-            let (low, high) = range.split_once("-").unwrap();
+        for range in data.split(',').map(|range| {
+            let (low, high) = range.split_once('-').unwrap();
             low.parse().unwrap()..high.parse::<u64>().unwrap() + 1
         }) {
             for num in range {
                 let num_len = num.ilog10() + 1;
 
-                if num_len % 2 != 0 {
+                if !num_len.is_multiple_of(2) {
                     continue;
                 }
 
@@ -78,14 +78,14 @@ pub mod part_one_all_numbers_with_loop {
 
         let mut result = 0;
 
-        for range in data.split(",").map(|range| {
-            let (low, high) = range.split_once("-").unwrap();
+        for range in data.split(',').map(|range| {
+            let (low, high) = range.split_once('-').unwrap();
             low.parse().unwrap()..high.parse::<u64>().unwrap() + 1
         }) {
             for num in range {
                 let num_len = get_len(num);
 
-                if num_len % 2 != 0 {
+                if !num_len.is_multiple_of(2) {
                     continue;
                 }
 
@@ -115,16 +115,16 @@ pub mod part_one_iterator {
     pub fn solve() -> u64 {
         let data = include_str!("../data/day2.txt");
 
-        data.split(",")
+        data.split(',')
             .map(|range| {
-                let (low, high) = range.split_once("-").unwrap();
+                let (low, high) = range.split_once('-').unwrap();
                 low.parse().unwrap()..high.parse::<u64>().unwrap() + 1
             })
             .flat_map(|range| {
                 range.map(|num| {
                     let num_len = num.ilog10() + 1;
 
-                    if num_len % 2 != 0 {
+                    if !num_len.is_multiple_of(2) {
                         return 0;
                     }
 
@@ -143,14 +143,14 @@ pub mod part_two_division {
 
         let mut result = 0;
 
-        for range in data.split(",").map(|range| {
-            let (low, high) = range.split_once("-").unwrap();
+        for range in data.split(',').map(|range| {
+            let (low, high) = range.split_once('-').unwrap();
             low.parse().unwrap()..high.parse::<u64>().unwrap() + 1
         }) {
             for num in range {
                 let num_len = num.ilog10() + 1;
 
-                if num_len % 2 != 0 {
+                if !num_len.is_multiple_of(2) {
                     // slow path same as below but only for odd lengths -> check for pattern length n = 1,3,5,...,1/2*length
                     if slow_path(
                         (1..num_len / 2 + 1).into_iter().filter(|n| n % 2 != 0),
@@ -166,7 +166,7 @@ pub mod part_two_division {
                 let divisor = 10u64.pow(num_len / 2) + 1;
 
                 // fast path or slow path for all lengths -> check for pattern length n = 1,2,3,...,1/2*length
-                if num % divisor == 0 || slow_path((1..num_len / 2 + 1).into_iter(), num, num_len) {
+                if num % divisor == 0 || slow_path(1..num_len / 2 + 1, num, num_len) {
                     result += num;
                 }
             }
@@ -224,14 +224,14 @@ pub mod part_two_compare_remainder {
 
         let mut result = 0;
 
-        for range in data.split(",").map(|range| {
-            let (low, high) = range.split_once("-").unwrap();
+        for range in data.split(',').map(|range| {
+            let (low, high) = range.split_once('-').unwrap();
             low.parse().unwrap()..high.parse::<u64>().unwrap() + 1
         }) {
             for num in range {
                 let num_len = num.ilog10() + 1;
 
-                if num_len % 2 != 0 {
+                if !num_len.is_multiple_of(2) {
                     // slow path same as below but only for odd lengths -> check for pattern length n = 1,3,5,...,1/2*length
                     if slow_path(
                         (1..num_len / 2 + 1).into_iter().filter(|n| n % 2 != 0),
@@ -247,9 +247,7 @@ pub mod part_two_compare_remainder {
                 let divisor = 10u64.pow(num_len / 2) + 1;
 
                 // fast path or slow path for all lengths -> check for pattern length n = 1,2,3,...,1/2*length
-                if num % divisor == 0
-                    || slow_path((1..num_len / 2 + 1).into_iter(), num, num_len)
-                {
+                if num % divisor == 0 || slow_path((1..num_len / 2 + 1).into_iter(), num, num_len) {
                     result += num;
                 }
             }
@@ -295,10 +293,10 @@ pub mod part_two_compare_remainder {
                 num /= divisor;
 
                 if rem != expected_rem {
-                    continue 'outer
+                    continue 'outer;
                 }
             }
-            
+
             return true;
         }
         false

@@ -5,15 +5,15 @@ pub fn solve() {
     dbg!(part_one);
     dbg!(part_two);
 
-    assert_eq!(part_one, 17324);
-    assert_eq!(part_two, 171846613143331);
+    assert_eq!(part_one, 17_324);
+    assert_eq!(part_two, 171_846_613_143_331);
 }
 
 pub mod part_one {
     pub fn solve() -> u32 {
         let data = include_str!("../data/day3.txt");
 
-        data.lines().map(|bank| get_max_joltage(bank)).sum()
+        data.lines().map(get_max_joltage).sum()
     }
 
     fn get_max_joltage(bank: &str) -> u32 {
@@ -39,7 +39,7 @@ pub mod part_two {
     pub fn solve() -> u64 {
         let data = include_str!("../data/day3.txt");
 
-        data.lines().map(|bank| get_max_joltage(bank)).sum()
+        data.lines().map(get_max_joltage).sum()
     }
 
     fn get_max_joltage(bank: &str) -> u64 {
@@ -90,7 +90,7 @@ pub mod part_two_using_bytes_not_chars {
     pub fn solve() -> u64 {
         let data = include_str!("../data/day3.txt");
 
-        data.lines().map(|bank| get_max_joltage(bank)).sum()
+        data.lines().map(get_max_joltage).sum()
     }
 
     fn get_max_joltage(bank: &str) -> u64 {
@@ -139,7 +139,7 @@ pub mod part_two_position_iterator {
     pub fn solve() -> u64 {
         let data = include_str!("../data/day3.txt");
 
-        data.lines().map(|bank| get_max_joltage(bank)).sum()
+        data.lines().map(get_max_joltage).sum()
     }
 
     fn get_max_joltage(bank: &str) -> u64 {

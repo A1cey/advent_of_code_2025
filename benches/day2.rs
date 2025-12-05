@@ -20,7 +20,7 @@ fn solutions(c: &mut Criterion) {
 
     group_1.finish();
 
-    let mut group_2 = c.benchmark_group("Day 2 Solutions Part One");
+    let mut group_2 = c.benchmark_group("Day 2 Solutions Part Two");
 
     group_2.bench_function("day2 part_two_division", |b| {
         b.iter(|| day2::part_two_division::solve())
