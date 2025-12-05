@@ -6,6 +6,7 @@ version = 4
 name = "advent_of_code_2025"
 version = "0.1.0"
 dependencies = [
+ "ars",
  "criterion",
 ]
 
@@ -38,6 +39,11 @@ name = "anstyle"
 version = "1.0.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5192cca8006f1fd4f7237516f40fa183bb07f8fbdfedaa0036de5ea9b0b45e78"
+
+[[package]]
+name = "ars"
+version = "0.1.0"
+source = "git+https://github.com/A1cey/ars.git#8bbd8852b05867b311a5e4a1b01ee957122f36bd"
 
 [[package]]
 name = "autocfg"

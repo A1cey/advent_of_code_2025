@@ -5,6 +5,7 @@ edition = "2024"
 
 [dependencies]
 criterion = { version = "0.8.0", features = ["html_reports"] }
+ars = {git = "https://github.com/A1cey/ars.git"}
 
 [[bench]]
 name = "day1"
