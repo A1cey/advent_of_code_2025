@@ -49,8 +49,8 @@ pub fn solve() {
     dbg!(part_one);
     dbg!(part_two);
 
-    assert_eq!(part_one, 1533);
-    assert_eq!(part_two, 9206);
+    assert_eq!(part_one, 1_533);
+    assert_eq!(part_two, 9_206);
 }
 
 pub mod part_one {
